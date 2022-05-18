@@ -4,7 +4,12 @@
 function getResult (didPass) {
 
   // TODO: write code in this function body to pass the tests
+  let string = ""
+  if (didPass === true) {string = "Well done, you passed!"}
 
+  else {string = "Sorry, try again"}
+
+  return string
 }
 
 module.exports = {
