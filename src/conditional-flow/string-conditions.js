@@ -42,28 +42,33 @@ function hasOddNumberVowels (val1) {
 
   // TODO: write code in this function body to pass the tests
 
-  // for charat index 0 if aeiou +1 to var and +1 to index
+  let vowelCount = 0
 
-  let vowelCount = ""
+  for (let i = 0; i < val1.length; i++) 
 
-  for (let i = 0; i < val1.length; i++){
-      if (val1.charAt(i) === "a" || "e" || "i"|| "o" || "u") {vowelCount += 1}
-  }
+      {
+        if (val1.charAt(i) === "a" || 
+            val1.charAt(i) === "e" ||  
+            val1.charAt(i) === "i" || 
+            val1.charAt(i) === "o" || 
+            val1.charAt(i) === "u" ||
+            val1.charAt(i) === "A" || 
+            val1.charAt(i) === "E" ||  
+            val1.charAt(i) === "I" || 
+            val1.charAt(i) === "O" || 
+            val1.charAt(i) === "U") 
 
-  let vowelOdd = ""
-  vowelOdd = vowelCount % 2
+          {vowelCount += 1}
+      }
 
-  let yesOdd = ""
+  let vowelCountModulusOneIfOdd = vowelCount % 2
 
-  if (vowelOdd === 0) {yesOdd = false}
-  else {yesOdd = true}
+  let yesOdd = false
+
+  if (vowelCountModulusOneIfOdd === 1) {yesOdd = true}
 
   return yesOdd
 }
-
-console.log(hasOddNumberVowels("hello"))
-console.log(val1.length);
-console.log("vowelCount is", vowelCount);
 
 
 // this function should return the middle character of a string if it has an odd number
@@ -75,19 +80,21 @@ function getMiddleLetter (val1) {
   // val1.length /2 if odd  return charat val1.length/2 +0.5
   // val1.length /2 if even  return charat val1.length/2 as well as charat val1.length/2 +1
 
-  let test = ""
-  test = val1.length/2
+  let halfVal1LengthModulus1 = 0
+  halfVal1LengthModulus1 = (val1.length/2) % 1
 
-  let test2 = ""
-  test2 = test % 1
+  let middleLetter = ""
 
-  let oddTest = ""
+  let middleLetterIfEvenLetters = val1.charAt((val1.length/2)-1) + val1.charAt((val1.length/2))
 
-  if (test2 === 0.5) {oddTest = val1.charAt((val1.length/2)+0.5)}
-  else {oddTest = val1.charAt(val1.length/2), val1.charAt((val1.length/2)+1)}
+  let middleLetterIfOddLetters = val1.charAt((val1.length/2)-0.5)
 
-  return oddTest
+  if (halfVal1LengthModulus1 === 0.5) {middleLetter = middleLetterIfOddLetters}
+  else {middleLetter = middleLetterIfEvenLetters}
+
+  return middleLetter
 }
+
 
 // This function should return the name of the season for the provided
 // month name. For example, "January" should return "Winter". If the provided
@@ -101,7 +108,24 @@ function getMiddleLetter (val1) {
 function seasonForMonth (monthName) {
 
   // TODO: write code in this function body to pass the tests
+
+  let season = ""
+
+  if (monthName === "March" || monthName === "April" || monthName === "May") 
+      {season = "Spring"}
+  else if (monthName === "June" || monthName === "July" || monthName === "August") 
+      {season = "Summer"}
+  else if (monthName === "September" || monthName === "October" || monthName === "November") 
+      {season = "Autumn"}
+  else if (monthName === "December" || monthName === "January" || monthName === "February") 
+      {season = "Winter"}
+  else 
+      {season = ""}
+
+
+  return season
 }
+
 
 module.exports = {
   a: isHello,
